@@ -1,0 +1,465 @@
+﻿<process name="Excelにコレクションを貼り付ける" version="1.0" bpversion="6.6.0.15260" narrative="" byrefcollection="true" type="object" runmode="Exclusive" preferredid="183af91c-ddef-4f67-9938-ac803fccfb8e">
+  <appdef>
+    <element name="アプリケーションルート">
+      <id>15cd6b09-c40e-491c-adee-6e2e2c638662</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="14892739-c8d3-449b-9340-59a56b925b7e" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5" type="Normal" published="True">
+    <name>Excelにコレクションを貼り付ける</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>273</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="39df0cda-9745-486c-84ec-dae392dc36e8" name="開始" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>0adb8778-f59e-47d0-aaa9-0e12f99fca1b</onsuccess>
+  </stage>
+  <stage stageid="0adb8778-f59e-47d0-aaa9-0e12f99fca1b" name="終了" type="End">
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="fd548a6f-9c64-41d3-a1f3-0fe5acd34cdd" name="ステージ1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>visualbasic</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+  </stage>
+  <stage stageid="06ef93d3-8fa1-4462-8f0a-831404e4b0eb" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>14892739-c8d3-449b-9340-59a56b925b7e</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="15eeeba7-d183-4e06-9aec-381c657861fb" name="開始" type="Start">
+    <subsheetid>14892739-c8d3-449b-9340-59a56b925b7e</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>463500bd-574d-442a-a374-81c2c71f2b60</onsuccess>
+  </stage>
+  <stage stageid="463500bd-574d-442a-a374-81c2c71f2b60" name="終了" type="End">
+    <subsheetid>14892739-c8d3-449b-9340-59a56b925b7e</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="04edbe53-9547-4d51-b21e-e3265a5876ea" name="Excelにコレクションを貼り付ける" type="SubSheetInfo">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="9c27b34e-224e-4574-bd55-a0949b989507" name="開始" type="Start">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="-120" />
+    <inputs>
+      <input type="text" name="ファイルパス" stage="ファイルパス" />
+      <input type="number" name="分割行数" narrative="50程度が目安？" stage="Add_Count" />
+    </inputs>
+    <onsuccess>a0d1ae85-1a7a-4419-afb6-54a3b9662dbc</onsuccess>
+  </stage>
+  <stage stageid="73ad4b44-eaea-4c55-bbe2-1d384fbc98f5" name="終了" type="End">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="675" />
+  </stage>
+  <stage stageid="a1e52c4d-8f02-4543-91af-8b2a1e46b646" name="注記1" type="Note">
+    <subsheetid>14892739-c8d3-449b-9340-59a56b925b7e</subsheetid>
+    <narrative>ページをクリーンアップ
+
+これは、ビジネスオブジェクトを終了したときにいくつかのファイナライズ（または「クリーンアップ」）タスクを実行することを選択できる任意のページです。
+
+クリーンアップアクションは、業務プロセスの最後にビジネスオブジェクトを閉じた直後に自動的に呼び出されます。
+
+このアクションを業務プロセスから呼び出すことはできません。また、ビジネスオブジェクトを破棄する前以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="dd83f519-d99b-4dab-983b-cf4762966202" name="注記2" type="Note">
+    <narrative>ページを初期化
+
+これは、ビジネスオブジェクトを読み込んだ後にいくつかの初期化タスクを実行することを選択できる任意のページです。
+
+初期化アクションはビジネスオブジェクトを読み込んだ直後に自動的に呼び出されます。
+
+業務プロセスからこのアクションを呼び出すことはできません。オブジェクトの作成後以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="f65db8c1-bd41-4030-94ba-31969a0a0640" name="handle" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="eac66aca-a746-4ac2-a5a9-6eb17ac543db" name="Data" type="Collection">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="90" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="3f958c2d-314d-422d-9cc8-d3b01b018512" name="MS Excel VBO::Create Instance" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-15" />
+    <inputs>
+      <input type="flag" name="Enable Events" friendlyname="Enable Events" narrative="Flag to indicate that events should be enabled / disabled on the attached instance - defaulted to True" expr="True" />
+    </inputs>
+    <outputs>
+      <output type="number" name="handle" friendlyname="handle" narrative="An integer which can be used to identify the created instance in subsequent actions" stage="handle" />
+    </outputs>
+    <onsuccess>8e40e04d-e4b9-4f8b-92df-091c508b39ad</onsuccess>
+    <resource object="MS Excel VBO" action="Create Instance" />
+  </stage>
+  <stage stageid="8e40e04d-e4b9-4f8b-92df-091c508b39ad" name="MS Excel VBO::Open Workbook" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" friendlyname="File name" narrative="The path and name of the file which should be opened." expr="[ファイルパス]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="Workbook Name" />
+    </outputs>
+    <onsuccess>3e240c30-25db-4881-a9ca-c9e1422eb6da</onsuccess>
+    <resource object="MS Excel VBO" action="Open Workbook" />
+  </stage>
+  <stage stageid="c387e74e-b2a7-4e9b-9b65-f3f2581a877c" name="Workbook Name" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="45" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="5587050b-8bc7-4a5e-9960-32a8dade0f65" name="MS Excel VBO::Write Collection" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="360" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the specified collection should be written. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook within which the data should be written. The default empty value indicates the current workbook within the specified instance." expr="[Workbook Name]" />
+      <input type="collection" name="Collection" friendlyname="Collection" narrative="The collection containing the data which should be written to the worksheet." expr="[Filter Collection]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet on which the given data should be written. The default empty value indicates the current sheet within the specified workbook." expr="&quot;Sheet2&quot;" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference at which the collection should be written." expr="[Cell Reference]" />
+      <input type="flag" name="Include Column Names" friendlyname="Include Column Names" narrative="True to indicate that the column names from the collection should be written out as the first row; False to ignore the column names and just write out the data." expr="[Add Header]" />
+    </inputs>
+    <onsuccess>ff1e1ada-daae-4752-ad57-f00b721bf9c2</onsuccess>
+    <resource object="MS Excel VBO" action="Write Collection" />
+  </stage>
+  <stage stageid="ff1e1ada-daae-4752-ad57-f00b721bf9c2" name="MS Excel VBO::Go To Next Empty Cell Down" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="405" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required cell should be found. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference of the cell which has been found to be empty - an empty value indicates that no empty cells were found." stage="Cell Reference" />
+    </outputs>
+    <onsuccess>2e2945b2-53f1-4a53-a635-786d2955ff61</onsuccess>
+    <resource object="MS Excel VBO" action="Go To Next Empty Cell Down" />
+  </stage>
+  <stage stageid="acf6aa73-8479-49b8-beaf-a12e4274dabf" name="Cell Reference" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="405" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">A1</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="3e240c30-25db-4881-a9ca-c9e1422eb6da" name="MS Excel VBO::Get Worksheet As Collection" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="90" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the worksheet which should be retrieved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which contains the sheet required. The default empty text indicates the currently active workbook on the specified instance." expr="[Workbook Name]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet within the specified workbook which should be written to a collection. The default empty text indicates the currently active worksheet within the specified workbook." expr="&quot;Sheet1&quot;" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="The collection containing the data from the specified worksheet - the column IDs will be gleaned from the first row on the sheet being retrieved." stage="Data" />
+    </outputs>
+    <onsuccess>63ed872a-0895-4f70-870f-04f2f3c90521</onsuccess>
+    <resource object="MS Excel VBO" action="Get Worksheet As Collection" />
+  </stage>
+  <stage stageid="22cc083c-2692-4df3-b853-3325fdd3c18d" name="Start_Row" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-210" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="42a683f8-e603-45f8-a911-20c1ee30bff8" name="End_Row" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-150" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="63ed872a-0895-4f70-870f-04f2f3c90521" name="コレクション::行をカウント" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="135" />
+    <inputs>
+      <input type="text" name="Collection Name" friendlyname="コレクション名" narrative="作用するコレクションの名前" expr="&quot;Data&quot;" />
+    </inputs>
+    <outputs>
+      <output type="number" name="Count" friendlyname="カウント" narrative="コレクション内でカウントされた行数" stage="カウント" />
+    </outputs>
+    <onsuccess>1ea97f89-3995-458a-a1e6-cec0388c9995</onsuccess>
+    <resource object="Blueprism.AutomateProcessCore.clsCollectionActions" action="Count Rows" />
+  </stage>
+  <stage stageid="2f41d9d4-f5b3-414e-b184-bb631401a3f0" name="カウント" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="135" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="269c3e07-03c4-4767-982d-d0f64ad05531" name="Add_Count" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-60" y="-90" />
+    <datatype>number</datatype>
+    <initialvalue>50</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="2e2945b2-53f1-4a53-a635-786d2955ff61" name="Cell, Start, End設定" type="MultipleCalculation">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="450" />
+    <onsuccess>d047057f-f2bf-4bc5-9b82-7df4d46b7473</onsuccess>
+    <steps>
+      <calculation expression="&quot;A&quot; &amp; Right([Cell Reference], Len([Cell Reference])-1)" stage="Cell Reference" />
+      <calculation expression="[End_Row] + 1" stage="Start_Row" />
+      <calculation expression="[Start_Row] + [Add_Count]" stage="End_Row" />
+    </steps>
+  </stage>
+  <stage stageid="a46885e1-2f65-47f9-af86-ead65aad539e" name="コレクションデータ全て転記済み？" type="Decision">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="270" />
+    <decision expression="[Start_Row] &gt;= [カウント]" />
+    <ontrue>05f3b004-ee59-4652-ac22-02af715754cc</ontrue>
+    <onfalse>98a7a230-8b98-4703-acd4-5b32c817fc5e</onfalse>
+  </stage>
+  <stage stageid="05f3b004-ee59-4652-ac22-02af715754cc" name="アンカー1" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="195" y="270" w="10" h="10" />
+    <onsuccess>d044f944-d81a-4967-b97d-437aa459a871</onsuccess>
+  </stage>
+  <stage stageid="d044f944-d81a-4967-b97d-437aa459a871" name="アンカー2" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="195" y="495" w="10" h="10" />
+    <onsuccess>d2385c9b-d138-4bda-9739-517d33b204e5</onsuccess>
+  </stage>
+  <stage stageid="d2385c9b-d138-4bda-9739-517d33b204e5" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="495" w="10" h="10" />
+    <onsuccess>6cdbd88d-c0dd-46f4-9084-5dc554baa45e</onsuccess>
+  </stage>
+  <stage stageid="a21ca9fe-09db-4a46-9b1c-0b43029d00e3" name="ファイルパス" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-60" y="-135" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">C:\Users\XXXXX\test.xlsx</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b7547e1d-e7dd-4d12-b50e-575df26b6707" name="復元1" type="Recover">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="240" y="450" />
+    <onsuccess>601b3643-cdd4-4a05-ba9b-479314ae2120</onsuccess>
+  </stage>
+  <stage stageid="601b3643-cdd4-4a05-ba9b-479314ae2120" name="再開1" type="Resume">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="330" y="450" />
+    <onsuccess>21b79f98-37fa-40b7-aae2-7713248c648c</onsuccess>
+  </stage>
+  <stage stageid="d4060ae4-9e00-45d0-9f53-8844b2e6f0d2" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="630" w="10" h="10" />
+    <onsuccess>73ad4b44-eaea-4c55-bbe2-1d384fbc98f5</onsuccess>
+  </stage>
+  <stage stageid="7753c603-561e-4c79-ae9a-63159406bc1c" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="330" y="630" w="10" h="10" />
+    <onsuccess>d4060ae4-9e00-45d0-9f53-8844b2e6f0d2</onsuccess>
+  </stage>
+  <stage stageid="d047057f-f2bf-4bc5-9b82-7df4d46b7473" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-75" y="450" w="10" h="10" />
+    <onsuccess>10ea8b51-1f5e-4b24-a449-0fd01c00150b</onsuccess>
+  </stage>
+  <stage stageid="10ea8b51-1f5e-4b24-a449-0fd01c00150b" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-75" y="180" w="10" h="10" />
+    <onsuccess>1ea97f89-3995-458a-a1e6-cec0388c9995</onsuccess>
+  </stage>
+  <stage stageid="1ea97f89-3995-458a-a1e6-cec0388c9995" name="アンカー3" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="180" w="10" h="10" />
+    <onsuccess>a71d241f-0af0-48c8-a3a7-2e6d6ce2b104</onsuccess>
+  </stage>
+  <stage stageid="4278a3ea-9130-45d5-9f91-17099a445472" name="ブロック1" type="Block">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="-105" y="15" w="390" h="465" />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+  </stage>
+  <stage stageid="b6c0905d-9461-4ab7-b6d9-ac7227faa113" name="MS Excel VBO::Close All Instances" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="585" />
+    <onsuccess>d4060ae4-9e00-45d0-9f53-8844b2e6f0d2</onsuccess>
+    <resource object="MS Excel VBO" action="Close All Instances" />
+  </stage>
+  <stage stageid="670f3776-17d4-4d48-afb0-ac611d3d4cd3" name="MS Excel VBO::Close All Instances" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="330" y="585" />
+    <onsuccess>7753c603-561e-4c79-ae9a-63159406bc1c</onsuccess>
+    <resource object="MS Excel VBO" action="Close All Instances" />
+  </stage>
+  <stage stageid="6cdbd88d-c0dd-46f4-9084-5dc554baa45e" name="MS Excel VBO::Close Workbook" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="540" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be closed." expr="[Workbook Name]" />
+      <input type="flag" name="Save Data" friendlyname="Save Data" narrative="True to save the data before closing the workbook; The default of False will discard any changes before closing the workbook." expr="True" />
+    </inputs>
+    <onsuccess>b6c0905d-9461-4ab7-b6d9-ac7227faa113</onsuccess>
+    <resource object="MS Excel VBO" action="Close Workbook" />
+  </stage>
+  <stage stageid="21b79f98-37fa-40b7-aae2-7713248c648c" name="MS Excel VBO::Close Workbook" type="Action">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="330" y="540" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be closed." expr="[Workbook Name]" />
+      <input type="flag" name="Save Data" friendlyname="Save Data" narrative="True to save the data before closing the workbook; The default of False will discard any changes before closing the workbook." expr="True" />
+    </inputs>
+    <onsuccess>670f3776-17d4-4d48-afb0-ac611d3d4cd3</onsuccess>
+    <resource object="MS Excel VBO" action="Close Workbook" />
+  </stage>
+  <stage stageid="99f5ddee-937e-439c-a4b9-4d1fa9c9b475" name="Filter Collection" type="Collection">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="90" y="225" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="a71d241f-0af0-48c8-a3a7-2e6d6ce2b104" name="コレクション絞り込み" type="Code">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="225" />
+    <inputs>
+      <input type="collection" name="Collection_In" expr="[Data]" />
+      <input type="number" name="Start_Row" expr="[Start_Row]" />
+      <input type="number" name="End_Row" expr="[End_Row]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Filter Collection" stage="Filter Collection" />
+    </outputs>
+    <onsuccess>a46885e1-2f65-47f9-af86-ead65aad539e</onsuccess>
+    <code><![CDATA[Filter_Collection = Collection_In.Clone
+Dim count As Long = 0
+
+For Each r1 As DataRow In Collection_In.Rows
+	If count >= Start_Row And count <= End_Row Then
+		Filter_Collection.ImportRow(r1)
+		If count = End_Row Then
+			Exit For
+		End If
+	End If
+	count = count + 1
+Next]]></code>
+  </stage>
+  <stage stageid="98a7a230-8b98-4703-acd4-5b32c817fc5e" name="初回ループ？" type="Decision">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="315" />
+    <decision expression="[Start_Row] = 0" />
+    <ontrue>5587050b-8bc7-4a5e-9960-32a8dade0f65</ontrue>
+    <onfalse>8330f27c-b6fd-4c48-aa5f-a613bc52e5b6</onfalse>
+  </stage>
+  <stage stageid="dd837431-abf0-4be5-bac6-14812ddb595e" name="Add Header" type="Data">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <display x="150" y="315" />
+    <datatype>flag</datatype>
+    <initialvalue>True</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="8330f27c-b6fd-4c48-aa5f-a613bc52e5b6" name="Add HeaderをFalse" type="Calculation">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="90" y="315" />
+    <onsuccess>ff33eafb-0dc8-4b71-94e5-9da889b39a5f</onsuccess>
+    <calculation expression="False" stage="Add Header" />
+  </stage>
+  <stage stageid="ff33eafb-0dc8-4b71-94e5-9da889b39a5f" name="アンカー4" type="Anchor">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="90" y="360" w="10" h="10" />
+    <onsuccess>5587050b-8bc7-4a5e-9960-32a8dade0f65</onsuccess>
+  </stage>
+  <stage stageid="a0d1ae85-1a7a-4419-afb6-54a3b9662dbc" name="End_Row初期設定" type="Calculation">
+    <subsheetid>5c57ef23-e7c8-4fc5-8934-8426bb8a3fc5</subsheetid>
+    <loginhibit />
+    <display x="15" y="-60" />
+    <onsuccess>3f958c2d-314d-422d-9cc8-d3b01b018512</onsuccess>
+    <calculation expression="[Add_Count]" stage="End_Row" />
+  </stage>
+</process>
