@@ -27,7 +27,7 @@
     <name>コレクション差分比較</name>
     <view>
       <camerax>0</camerax>
-      <cameray>21</cameray>
+      <cameray>126</cameray>
       <zoom version="2">1.875</zoom>
     </view>
   </subsheet>
@@ -113,8 +113,9 @@
       <input type="text" name="Target Field3" expr="[Target Field3]" />
     </inputs>
     <outputs>
-      <output type="collection" name="Result Collection" stage="Result Collection" />
-      <output type="collection" name="Diff Collection" stage="Diff Collection" />
+      <output type="collection" name="Result Target Collection" stage="Result_Target_Collection" />
+      <output type="collection" name="Duplicate Collection" stage="Duplicate_Collection" />
+      <output type="collection" name="Result Base Collection" stage="Result_Base_Collection" />
       <output type="flag" name="Success" stage="Success" />
       <output type="text" name="Message" stage="Message" />
     </outputs>
@@ -146,29 +147,34 @@
 		count　= count + 1
 	Next
 
-	Dim Tmp_Diff_Collection, Tmp_Result_Collection As DataTable
+	Dim Tmp_Duplicate_Collection, Tmp_Result_Target_Collection, Tmp_NewBase_Collection As DataTable
 
-	Tmp_Diff_Collection = Target_Collection.Clone
-	Tmp_Result_Collection = Target_Collection.copy()
+	
+	Tmp_Duplicate_Collection = Target_Collection.Clone
+	Tmp_Result_Target_Collection = Target_Collection.copy()
+	Tmp_NewBase_Collection = NewBase_Collection.Clone
 
 	For Each r2 As DataRow In NewBase_Collection.Rows
 		Dim find_rows As DataRow()
-		find_rows = Tmp_Result_Collection.Select(Target_Field1 & " = '" & r2(Base_Field1) & "'" & _
+		find_rows = Tmp_Result_Target_Collection.Select(Target_Field1 & " = '" & r2(Base_Field1) & "'" & _
 				If(Target_Field2 <> "", " AND " & Target_Field2 & " = '" & r2(Base_Field2) & "'", "") & _
 				If(Target_Field3 <> "", " AND " & Target_Field3 & " = '" & r2(Base_Field3) & "'", ""))
 
 		If find_rows.Length <> 0 Then
 			' Base_CollectionにもTarget_Collectionにも存在する場合
 			For Each r3 As DataRow In find_rows
-				Tmp_Diff_Collection.ImportRow(r3)
+				Tmp_Duplicate_Collection.ImportRow(r3)
 				r3.Delete()
 			Next
+		Else
+			Tmp_NewBase_Collection.ImportRow(r2)
 		End If
 	Next
 
-	Diff_Collection = Tmp_Diff_Collection.DefaultView.ToTable
-	'Diff_Collection = NewBase_Collection.DefaultView.ToTable
-	Result_Collection = Tmp_Result_Collection.DefaultView.ToTable
+	Duplicate_Collection = Tmp_Duplicate_Collection.DefaultView.ToTable
+	Result_Target_Collection = Tmp_Result_Target_Collection.DefaultView.ToTable
+	Result_Base_Collection = Tmp_NewBase_Collection.DefaultView.ToTable
+	
     Success = True
     Message = ""
 Catch e As Exception
@@ -178,7 +184,7 @@ End Try]]></code>
   </stage>
   <stage stageid="ce991b6d-226f-4d8c-b5ac-7bba96bf2443" name="Message" type="Data">
     <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
-    <display x="-195" y="300" w="150" h="30" />
+    <display x="-195" y="375" w="150" h="30" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
     <datatype>text</datatype>
     <initialvalue />
@@ -187,7 +193,7 @@ End Try]]></code>
   </stage>
   <stage stageid="f4b441aa-4d5f-4b3b-af2f-67c845498be8" name="Success" type="Data">
     <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
-    <display x="-195" y="270" w="150" h="30" />
+    <display x="-195" y="345" w="150" h="30" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
     <datatype>flag</datatype>
     <initialvalue />
@@ -206,9 +212,13 @@ End Try]]></code>
     <display x="15" y="-105" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
     <inputs>
-      <input type="collection" name="Collection" stage="Collection In" />
+      <input type="collection" name="Base Collection" stage="Base Collection" />
+      <input type="collection" name="Target Collection" stage="Target Collection" />
+      <input type="text" name="Base Field1" stage="Base Field1" />
       <input type="text" name="Target Field1" stage="Target Field1" />
+      <input type="text" name="Base Field2" stage="Base Field2" />
       <input type="text" name="Target Field2" stage="Target Field2" />
+      <input type="text" name="Base Field3" stage="Base Field3" />
       <input type="text" name="Target Field3" stage="Target Field3" />
     </inputs>
     <onsuccess>da4ecc92-9c3a-4be3-b6d8-a5e6e9ac8828</onsuccess>
@@ -219,7 +229,9 @@ End Try]]></code>
     <display x="15" y="75" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
     <outputs>
-      <output type="collection" name="Deduplication Collection" stage="Collection Out" />
+      <output type="collection" name="Result Base Collection" stage="Result_Base_Collection" />
+      <output type="collection" name="Result Target Collection" stage="Result_Target_Collection" />
+      <output type="collection" name="Duplicate Collection" stage="Duplicate_Collection" />
       <output type="flag" name="Success" stage="Success" />
       <output type="text" name="Message" stage="Message" />
     </outputs>
@@ -294,16 +306,15 @@ End Try]]></code>
         <field name="フィールド3" type="text" value="あああ" />
         <field name="フィールド4" type="text" value="ｃｃｃｃ" />
       </row>
+      <row>
+        <field name="フィールド1" type="text" value="4" />
+        <field name="フィールド2" type="text" value="eeee" />
+        <field name="フィールド3" type="text" value="ffff" />
+        <field name="フィールド4" type="text" value="gggg" />
+      </row>
     </initialvalue>
   </stage>
-  <stage stageid="5f30b1f4-0502-4c29-80ef-3d78b3c6aaf1" name="Diff Collection" type="Collection">
-    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
-    <display x="-120" y="210" w="150" h="60" />
-    <datatype>collection</datatype>
-    <private />
-    <alwaysinit />
-  </stage>
-  <stage stageid="cdb0921c-9dab-42bf-bb74-f679409e7e8a" name="Result Collection" type="Collection">
+  <stage stageid="cdb0921c-9dab-42bf-bb74-f679409e7e8a" name="Result_Target_Collection" type="Collection">
     <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
     <display x="-270" y="210" w="150" h="60" />
     <datatype>collection</datatype>
@@ -379,6 +390,20 @@ End Try]]></code>
     <display x="-120" y="150" w="120" h="30" />
     <datatype>text</datatype>
     <initialvalue xml:space="preserve">Field3</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9b53152f-a87d-4dcf-8243-c88ba44f8080" name="Result_Base_Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-270" y="285" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="89839665-2767-4fd7-83c2-885204ee22ad" name="Duplicate_Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-120" y="210" w="150" h="60" />
+    <datatype>collection</datatype>
     <private />
     <alwaysinit />
   </stage>
