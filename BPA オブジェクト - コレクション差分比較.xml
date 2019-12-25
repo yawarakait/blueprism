@@ -1,0 +1,410 @@
+﻿<process name="コレクション差分比較" version="1.0" bpversion="6.6.0.15260" narrative="" byrefcollection="true" type="object" runmode="Exclusive" preferredid="4774e804-cb5b-4328-aa96-06f81cb8335e">
+  <appdef>
+    <element name="アプリケーションルート">
+      <id>9c79898d-7edd-4092-b07f-f4dbdd408b85</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="3b2d5c57-d4ba-455b-8ebd-dede94fb79cf" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="30ee9b20-6647-4df8-abf3-f21898147b6b" type="Normal" published="True">
+    <name>コレクション差分比較</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>126</cameray>
+      <zoom version="2">1.875</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="1a213dd6-13ea-4444-833e-cec752dcb1ce" name="開始" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>0e08da7e-528f-4e29-9f25-ae0bceb8637a</onsuccess>
+  </stage>
+  <stage stageid="0e08da7e-528f-4e29-9f25-ae0bceb8637a" name="終了" type="End">
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="f10a4b4a-4721-4cc5-b540-08fb3e8fb4d6" name="ステージ1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>visualbasic</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+  </stage>
+  <stage stageid="1bec8c65-38be-4186-9369-190ba66b4e55" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>3b2d5c57-d4ba-455b-8ebd-dede94fb79cf</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="4fcbc742-77db-423a-99d6-85ebaaec7851" name="開始" type="Start">
+    <subsheetid>3b2d5c57-d4ba-455b-8ebd-dede94fb79cf</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>3729ae4c-194d-4637-999a-98b45e55c532</onsuccess>
+  </stage>
+  <stage stageid="3729ae4c-194d-4637-999a-98b45e55c532" name="終了" type="End">
+    <subsheetid>3b2d5c57-d4ba-455b-8ebd-dede94fb79cf</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="af5ca4bd-cd91-45a9-8a46-a22a7664ab9f" name="コレクション差分比較" type="SubSheetInfo">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="310ea82c-73a8-44ab-a301-fcce3669653d" name="注記1" type="Note">
+    <subsheetid>3b2d5c57-d4ba-455b-8ebd-dede94fb79cf</subsheetid>
+    <narrative>ページをクリーンアップ
+
+これは、ビジネスオブジェクトを終了したときにいくつかのファイナライズ（または「クリーンアップ」）タスクを実行することを選択できる任意のページです。
+
+クリーンアップアクションは、業務プロセスの最後にビジネスオブジェクトを閉じた直後に自動的に呼び出されます。
+
+このアクションを業務プロセスから呼び出すことはできません。また、ビジネスオブジェクトを破棄する前以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="1038cb95-145f-456d-89f3-d9aa164c1b83" name="注記2" type="Note">
+    <narrative>ページを初期化
+
+これは、ビジネスオブジェクトを読み込んだ後にいくつかの初期化タスクを実行することを選択できる任意のページです。
+
+初期化アクションはビジネスオブジェクトを読み込んだ直後に自動的に呼び出されます。
+
+業務プロセスからこのアクションを呼び出すことはできません。オブジェクトの作成後以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="da4ecc92-9c3a-4be3-b6d8-a5e6e9ac8828" name="DiffComp Collection" type="Code">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="15" y="-30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <inputs>
+      <input type="collection" name="Base Collection" expr="[Base Collection]" />
+      <input type="collection" name="Target Collection" expr="[Target Collection]" />
+      <input type="text" name="Base Field1" expr="[Base Field1]" />
+      <input type="text" name="Target Field1" expr="[Target Field1]" />
+      <input type="text" name="Base Field2" expr="[Base Field2]" />
+      <input type="text" name="Target Field2" expr="[Target Field2]" />
+      <input type="text" name="Base Field3" expr="[Base Field3]" />
+      <input type="text" name="Target Field3" expr="[Target Field3]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Result Target Collection" stage="Result_Target_Collection" />
+      <output type="collection" name="Duplicate Collection" stage="Duplicate_Collection" />
+      <output type="collection" name="Result Base Collection" stage="Result_Base_Collection" />
+      <output type="flag" name="Success" stage="Success" />
+      <output type="text" name="Message" stage="Message" />
+    </outputs>
+    <onsuccess>655181f2-344d-4a08-9067-cc9b88702092</onsuccess>
+    <code><![CDATA[Try
+	If Base_Field1 = "" Or Target_Field1 = "" Then
+		Success = False
+		Message = "Base_Field1, Target_Field1は必須項目です。"
+		Exit Sub
+	End If
+
+	Dim NewBase_Collection As DataTable
+	NewBase_Collection = Base_Collection.Clone
+
+	Dim count As Long = 0
+	For Each r1 As DataRow In Base_Collection.Rows
+		If count = 0 Then
+			NewBase_Collection.ImportRow(r1)
+		Else
+			Dim find_rows As DataRow()
+			find_rows = NewBase_Collection.Select(Base_Field1 & " = '" & r1(Base_Field1) & "'" & _
+					If(Base_Field2 <> "", " AND " & Base_Field2 & " = '" & r1(Base_Field2) & "'", "") & _
+					If(Base_Field3 <> "", " AND " & Base_Field3 & " = '" & r1(Base_Field3) & "'", ""))
+
+			If find_rows.Length = 0 Then
+				NewBase_Collection.ImportRow(r1)
+			End If
+		End If
+		count　= count + 1
+	Next
+
+	Dim Tmp_Duplicate_Collection, Tmp_Result_Target_Collection, Tmp_NewBase_Collection As DataTable
+
+	
+	Tmp_Duplicate_Collection = Target_Collection.Clone
+	Tmp_Result_Target_Collection = Target_Collection.copy()
+	Tmp_NewBase_Collection = NewBase_Collection.Clone
+
+	For Each r2 As DataRow In NewBase_Collection.Rows
+		Dim find_rows As DataRow()
+		find_rows = Tmp_Result_Target_Collection.Select(Target_Field1 & " = '" & r2(Base_Field1) & "'" & _
+				If(Target_Field2 <> "", " AND " & Target_Field2 & " = '" & r2(Base_Field2) & "'", "") & _
+				If(Target_Field3 <> "", " AND " & Target_Field3 & " = '" & r2(Base_Field3) & "'", ""))
+
+		If find_rows.Length <> 0 Then
+			' Base_CollectionにもTarget_Collectionにも存在する場合
+			For Each r3 As DataRow In find_rows
+				Tmp_Duplicate_Collection.ImportRow(r3)
+				r3.Delete()
+			Next
+		Else
+			Tmp_NewBase_Collection.ImportRow(r2)
+		End If
+	Next
+
+	Duplicate_Collection = Tmp_Duplicate_Collection.DefaultView.ToTable
+	Result_Target_Collection = Tmp_Result_Target_Collection.DefaultView.ToTable
+	Result_Base_Collection = Tmp_NewBase_Collection.DefaultView.ToTable
+	
+    Success = True
+    Message = ""
+Catch e As Exception
+    Success = False
+    Message = e.Message
+End Try]]></code>
+  </stage>
+  <stage stageid="ce991b6d-226f-4d8c-b5ac-7bba96bf2443" name="Message" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-195" y="375" w="150" h="30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="f4b441aa-4d5f-4b3b-af2f-67c845498be8" name="Success" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-195" y="345" w="150" h="30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <datatype>flag</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="21da2143-0394-4292-91b2-2fae9fe24e2d" name="Start" type="Start">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <preconditions>
+      <condition narrative="None." />
+    </preconditions>
+    <postconditions>
+      <condition narrative="The collection will have been sorted." />
+    </postconditions>
+    <display x="15" y="-105" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <inputs>
+      <input type="collection" name="Base Collection" stage="Base Collection" />
+      <input type="collection" name="Target Collection" stage="Target Collection" />
+      <input type="text" name="Base Field1" stage="Base Field1" />
+      <input type="text" name="Target Field1" stage="Target Field1" />
+      <input type="text" name="Base Field2" stage="Base Field2" />
+      <input type="text" name="Target Field2" stage="Target Field2" />
+      <input type="text" name="Base Field3" stage="Base Field3" />
+      <input type="text" name="Target Field3" stage="Target Field3" />
+    </inputs>
+    <onsuccess>da4ecc92-9c3a-4be3-b6d8-a5e6e9ac8828</onsuccess>
+  </stage>
+  <stage stageid="655181f2-344d-4a08-9067-cc9b88702092" name="End" type="End">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="15" y="75" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <outputs>
+      <output type="collection" name="Result Base Collection" stage="Result_Base_Collection" />
+      <output type="collection" name="Result Target Collection" stage="Result_Target_Collection" />
+      <output type="collection" name="Duplicate Collection" stage="Duplicate_Collection" />
+      <output type="flag" name="Success" stage="Success" />
+      <output type="text" name="Message" stage="Message" />
+    </outputs>
+  </stage>
+  <stage stageid="79840317-2a3b-4d00-baa0-060d247cbf6e" name="Base Field1" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-255" y="60" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">フィールド1</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="75e40351-90d6-40dc-87e2-01d68142f184" name="Base Field2" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-255" y="105" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">フィールド2</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="ef6f2aa5-e8ab-4f7b-b886-78c90ab83888" name="Base Field3" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-255" y="150" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">フィールド3</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b9733e71-df51-4d47-bb4d-3df2072295df" name="Base Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-255" y="0" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="フィールド1" type="text" />
+      <field name="フィールド2" type="text" />
+      <field name="フィールド3" type="text" />
+      <field name="フィールド4" type="text" />
+    </collectioninfo>
+    <initialvalue>
+      <row>
+        <field name="フィールド1" type="text" value="1" />
+        <field name="フィールド2" type="text" value="aaaa" />
+        <field name="フィールド3" type="text" value="bbbb" />
+        <field name="フィールド4" type="text" value="cccc" />
+      </row>
+      <row>
+        <field name="フィールド1" type="text" value="10" />
+        <field name="フィールド2" type="text" value="aaa" />
+        <field name="フィールド3" type="text" value="ｂｂｂ" />
+        <field name="フィールド4" type="text" value="ｃｃｃ" />
+      </row>
+      <row>
+        <field name="フィールド1" type="text" value="1" />
+        <field name="フィールド2" type="text" value="aaaa" />
+        <field name="フィールド3" type="text" value="ｂｂ" />
+        <field name="フィールド4" type="text" value="ｘｃｘｃ" />
+      </row>
+      <row>
+        <field name="フィールド1" type="text" value="1" />
+        <field name="フィールド2" type="text" value="aaaa" />
+        <field name="フィールド3" type="text" value="ｂｂ" />
+        <field name="フィールド4" type="text" value="あああ" />
+      </row>
+      <row>
+        <field name="フィールド1" type="text" value="3" />
+        <field name="フィールド2" type="text" value="ｄｄｄ" />
+        <field name="フィールド3" type="text" value="あああ" />
+        <field name="フィールド4" type="text" value="ｃｃｃｃ" />
+      </row>
+      <row>
+        <field name="フィールド1" type="text" value="4" />
+        <field name="フィールド2" type="text" value="eeee" />
+        <field name="フィールド3" type="text" value="ffff" />
+        <field name="フィールド4" type="text" value="gggg" />
+      </row>
+    </initialvalue>
+  </stage>
+  <stage stageid="cdb0921c-9dab-42bf-bb74-f679409e7e8a" name="Result_Target_Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-270" y="210" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="fc0205f6-f7d5-4d7e-8e7d-ec4337216df2" name="Target Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-120" y="0" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Field1" type="text" />
+      <field name="Field2" type="text" />
+      <field name="Field3" type="text" />
+      <field name="Field4" type="text" />
+    </collectioninfo>
+    <initialvalue>
+      <row>
+        <field name="Field1" type="text" value="1" />
+        <field name="Field2" type="text" value="aaaa" />
+        <field name="Field3" type="text" value="bbbb" />
+        <field name="Field4" type="text" value="cccc" />
+      </row>
+      <row>
+        <field name="Field1" type="text" value="10" />
+        <field name="Field2" type="text" value="aaa" />
+        <field name="Field3" type="text" value="ｂｂｂ" />
+        <field name="Field4" type="text" value="ｃｃｃ" />
+      </row>
+      <row>
+        <field name="Field1" type="text" value="1" />
+        <field name="Field2" type="text" value="aaaa" />
+        <field name="Field3" type="text" value="sssss" />
+        <field name="Field4" type="text" value="ｘｃｘｃ" />
+      </row>
+      <row>
+        <field name="Field1" type="text" value="1" />
+        <field name="Field2" type="text" value="aaaa" />
+        <field name="Field3" type="text" value="ｂｂ" />
+        <field name="Field4" type="text" value="あああ" />
+      </row>
+      <row>
+        <field name="Field1" type="text" value="3" />
+        <field name="Field2" type="text" value="ｄｄｄ" />
+        <field name="Field3" type="text" value="あああ" />
+        <field name="Field4" type="text" value="ｃｃｃｃ" />
+      </row>
+    </initialvalue>
+  </stage>
+  <stage stageid="21750e11-8d71-4489-bc5b-c7c9002cfcfa" name="Target Field1" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-120" y="60" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Field1</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="4d7d9b6a-cc9a-4f25-9f7f-a03bdddfefcd" name="Target Field2" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-120" y="105" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Field2</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="5aedf928-cb91-44e9-be65-e46c3f27d6bc" name="Target Field3" type="Data">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <loginhibit />
+    <display x="-120" y="150" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Field3</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9b53152f-a87d-4dcf-8243-c88ba44f8080" name="Result_Base_Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-270" y="285" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="89839665-2767-4fd7-83c2-885204ee22ad" name="Duplicate_Collection" type="Collection">
+    <subsheetid>30ee9b20-6647-4df8-abf3-f21898147b6b</subsheetid>
+    <display x="-120" y="210" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
