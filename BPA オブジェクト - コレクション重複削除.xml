@@ -211,7 +211,7 @@ End Try]]></code>
     <loginhibit />
     <display x="-195" y="60" w="120" h="30" />
     <datatype>text</datatype>
-    <initialvalue xml:space="preserve">フィールド1</initialvalue>
+    <initialvalue />
     <private />
     <alwaysinit />
   </stage>
@@ -220,7 +220,7 @@ End Try]]></code>
     <loginhibit />
     <display x="-195" y="105" w="120" h="30" />
     <datatype>text</datatype>
-    <initialvalue xml:space="preserve">フィールド2</initialvalue>
+    <initialvalue />
     <private />
     <alwaysinit />
   </stage>
@@ -229,7 +229,7 @@ End Try]]></code>
     <loginhibit />
     <display x="-195" y="150" w="120" h="30" />
     <datatype>text</datatype>
-    <initialvalue xml:space="preserve">フィールド3</initialvalue>
+    <initialvalue />
     <private />
     <alwaysinit />
   </stage>
@@ -239,43 +239,5 @@ End Try]]></code>
     <datatype>collection</datatype>
     <private />
     <alwaysinit />
-    <collectioninfo>
-      <field name="フィールド1" type="text" />
-      <field name="フィールド2" type="text" />
-      <field name="フィールド3" type="text" />
-      <field name="フィールド4" type="text" />
-    </collectioninfo>
-    <initialvalue>
-      <row>
-        <field name="フィールド1" type="text" value="1" />
-        <field name="フィールド2" type="text" value="aaaa" />
-        <field name="フィールド3" type="text" value="bbbb" />
-        <field name="フィールド4" type="text" value="cccc" />
-      </row>
-      <row>
-        <field name="フィールド1" type="text" value="10" />
-        <field name="フィールド2" type="text" value="aaa" />
-        <field name="フィールド3" type="text" value="ｂｂｂ" />
-        <field name="フィールド4" type="text" value="ｃｃｃ" />
-      </row>
-      <row>
-        <field name="フィールド1" type="text" value="1" />
-        <field name="フィールド2" type="text" value="aaaa" />
-        <field name="フィールド3" type="text" value="ｂｂ" />
-        <field name="フィールド4" type="text" value="ｘｃｘｃ" />
-      </row>
-      <row>
-        <field name="フィールド1" type="text" value="1" />
-        <field name="フィールド2" type="text" value="aaaa" />
-        <field name="フィールド3" type="text" value="ｂｂ" />
-        <field name="フィールド4" type="text" value="あああ" />
-      </row>
-      <row>
-        <field name="フィールド1" type="text" value="3" />
-        <field name="フィールド2" type="text" value="ｄｄｄ" />
-        <field name="フィールド3" type="text" value="あああ" />
-        <field name="フィールド4" type="text" value="ｃｃｃｃ" />
-      </row>
-    </initialvalue>
   </stage>
 </process>
