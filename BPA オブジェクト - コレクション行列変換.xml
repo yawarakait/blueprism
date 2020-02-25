@@ -1,0 +1,209 @@
+﻿<process name="コレクション行列変換" version="1.0" bpversion="6.6.0.15260" narrative="" byrefcollection="true" type="object" runmode="Background" preferredid="b4f128ba-67e8-41f9-91b4-f26a4e898a7a">
+  <appdef>
+    <element name="アプリケーションルート">
+      <id>cd9b1fdd-6fff-4d02-9a9d-83c915dcad45</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="c91cc256-f07b-4216-b9cc-8c2af34f0005" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="417824fb-bd1c-4f3d-849e-5b45b1a6712b" type="Normal" published="True">
+    <name>コレクション行列変換</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>38</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="f5ef46c8-f915-4563-8f3e-9a878c9e73a6" name="開始" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>e158cee4-6cf2-4ad2-aa18-61683e9640bc</onsuccess>
+  </stage>
+  <stage stageid="e158cee4-6cf2-4ad2-aa18-61683e9640bc" name="終了" type="End">
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="74f7c210-634d-4ecf-925c-7300bed1bb0b" name="ステージ1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>visualbasic</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+  </stage>
+  <stage stageid="af28ca56-63af-4e0c-97f8-7a71216b8b43" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>c91cc256-f07b-4216-b9cc-8c2af34f0005</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="d628dd10-a686-4c4b-88bb-2dde372cbbf4" name="開始" type="Start">
+    <subsheetid>c91cc256-f07b-4216-b9cc-8c2af34f0005</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>65be3275-da88-461d-9d73-28536c54a7cd</onsuccess>
+  </stage>
+  <stage stageid="65be3275-da88-461d-9d73-28536c54a7cd" name="終了" type="End">
+    <subsheetid>c91cc256-f07b-4216-b9cc-8c2af34f0005</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="9c384720-0d6e-4f8f-a9af-9e08c1b36036" name="注記1" type="Note">
+    <subsheetid>c91cc256-f07b-4216-b9cc-8c2af34f0005</subsheetid>
+    <narrative>ページをクリーンアップ
+
+これは、ビジネスオブジェクトを終了したときにいくつかのファイナライズ（または「クリーンアップ」）タスクを実行することを選択できる任意のページです。
+
+クリーンアップアクションは、業務プロセスの最後にビジネスオブジェクトを閉じた直後に自動的に呼び出されます。
+
+このアクションを業務プロセスから呼び出すことはできません。また、ビジネスオブジェクトを破棄する前以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="77e2338f-643e-452f-9508-5d058d2be5c6" name="注記2" type="Note">
+    <narrative>ページを初期化
+
+これは、ビジネスオブジェクトを読み込んだ後にいくつかの初期化タスクを実行することを選択できる任意のページです。
+
+初期化アクションはビジネスオブジェクトを読み込んだ直後に自動的に呼び出されます。
+
+業務プロセスからこのアクションを呼び出すことはできません。オブジェクトの作成後以外に呼び出されることもありません。</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="c1a31979-cf7b-4a0a-8adf-e51938e7efd8" name="コレクション行列変換" type="SubSheetInfo">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="b538ae7a-ff11-4031-ad2f-64792acf9240" name="開始" type="Start">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <inputs>
+      <input type="collection" name="Collection In" stage="Collection In" />
+    </inputs>
+    <onsuccess>7d2165ea-4ac3-4ab4-9c08-98973f6b645d</onsuccess>
+  </stage>
+  <stage stageid="976378fd-c7a1-40fd-b56b-f226d4a552f4" name="終了" type="End">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+    <outputs>
+      <output type="collection" name="Collection Out" stage="Collection Out" />
+    </outputs>
+  </stage>
+  <stage stageid="c48d633b-7bc1-4538-9cce-2d2a4189834f" name="Collection Out" type="Collection">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <loginhibit />
+    <display x="-180" y="60" w="150" h="60" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="1fe00c58-ec20-4138-9675-73e78b2fdf32" name="Message" type="Data">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <display x="-180" y="150" w="150" h="30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9df4794d-c2b9-4831-9e3c-f79a81ee7e41" name="Success" type="Data">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <display x="-180" y="120" w="150" h="30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <datatype>flag</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9a2b4910-5b61-46c3-a897-32b9efa8d1d5" name="Collection In" type="Collection">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <display x="-180" y="-15" w="150" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="7d2165ea-4ac3-4ab4-9c08-98973f6b645d" name="Transpose Collection" type="Code">
+    <subsheetid>417824fb-bd1c-4f3d-849e-5b45b1a6712b</subsheetid>
+    <loginhibit />
+    <display x="15" y="-15" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <inputs>
+      <input type="collection" name="Collection In" expr="[Collection In]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Transpose Collection" stage="Collection Out" />
+      <output type="flag" name="Success" stage="Success" />
+      <output type="text" name="Message" stage="Message" />
+    </outputs>
+    <onsuccess>976378fd-c7a1-40fd-b56b-f226d4a552f4</onsuccess>
+    <code><![CDATA[Try
+	Dim New_Collection As DataTable
+	New_Collection = New DataTable()
+
+	'最大行列取得
+	Dim maxRow, maxCol As Integer
+	maxRow = Collection_In.Rows.Count
+	maxCol = Collection_In.Columns.Count
+	
+	'フィールド作成,空行追加
+	Dim tmpColCount As Integer = 0
+	For Each r1 As DataRow In Collection_In.Rows
+		New_Collection.Columns.Add("Column" & tmpColCount, Type.GetType("System.String"))
+		tmpColCount = tmpColCount + 1
+	Next
+	For Each c1 As DataColumn In Collection_In.Columns
+		Dim dr As DataRow
+		dr = New_Collection.NewRow
+		New_Collection.Rows.Add(dr)
+	Next
+
+	'データ登録
+	Dim rowCount As Integer = 0
+	Dim newColCount As Integer = 0
+	While rowCount < maxRow
+		Dim colCount As Integer = 0
+		Dim newRowCount As Integer = 0
+		For Each c3 As DataColumn In Collection_In.Columns
+			New_Collection.Rows(newRowCount)("Column" & newColCount) = Collection_In.Rows(rowCount)(c3.ColumnName)
+			newRowCount = newRowCount + 1
+			colCount = colCount + 1
+		Next
+		newColCount = newColCount + 1
+		rowCount = rowCount + 1
+	End While
+
+    Transpose_Collection = New_Collection.DefaultView.ToTable
+    Success = True
+    Message = ""
+Catch e As Exception
+    Success = False
+    Message = e.Message
+End Try]]></code>
+  </stage>
+</process>
