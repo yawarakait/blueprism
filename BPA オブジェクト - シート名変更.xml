@@ -1,0 +1,117 @@
+﻿<process name="シート名変更" version="6.6.0.15260" bpversion="6.6.0.15260" narrative="The VBO replacement for the Common Automation Excel business object" byrefcollection="true" type="object" runmode="Exclusive" preferredid="5c67ac16-fdff-4725-882d-f4b5345df40f">
+  <appdef>
+    <element name="Application Root">
+      <id>ca515603-8af2-4608-8a70-31028a7d9a0b</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>294</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="97875263-54e8-4132-9c6e-7a1e710aa431" name="シート名変更" type="SubSheetInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="4b3271b8-680c-4176-9728-db43e54e1423" name="開始" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <inputs>
+      <input type="number" name="Handle" stage="handle" />
+      <input type="text" name="Workbook" stage="Workbook Name" />
+      <input type="text" name="Target Sheet Name" stage="Target Sheet Name" />
+      <input type="text" name="Rename Sheet Name" stage="Rename Sheet Name" />
+    </inputs>
+    <onsuccess>22c3b618-4196-4a20-af8d-2bcc48378077</onsuccess>
+  </stage>
+  <stage stageid="6fe15c2f-93ad-474a-b0a8-748318461e19" name="終了" type="End">
+    <loginhibit />
+    <display x="15" y="105" />
+  </stage>
+  <stage stageid="2ea5fd7b-949c-449f-97ec-362331616813" name="Rename Worksheet Name" type="Code">
+    <loginhibit />
+    <display x="15" y="30" />
+    <inputs>
+      <input type="number" name="Handle" expr="[handle]" />
+      <input type="text" name="Workbook" expr="[Workbook Name]" />
+      <input type="text" name="Target Sheet Name" expr="[Target Sheet Name]" />
+      <input type="text" name="Rename Sheet Name" expr="[Rename Sheet Name]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Success" stage="Success" />
+      <output type="text" name="Message" stage="Message" />
+    </outputs>
+    <onsuccess>6fe15c2f-93ad-474a-b0a8-748318461e19</onsuccess>
+    <code><![CDATA[Dim ws As Object = GetWorksheet(Handle, Workbook, Target_Sheet_Name)
+
+Try
+	ws.Name = Rename_Sheet_Name
+	Success = True
+
+Catch e As Exception
+	Success = False
+	Message = e.Message
+Finally
+    ws = Nothing
+End Try
+]]></code>
+  </stage>
+  <stage stageid="4ad7b7de-8beb-4625-b331-50eccf08946a" name="Success" type="Data">
+    <display x="-150" y="75" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="13c222ff-ea2d-482d-8d84-aebfce205b4c" name="Message" type="Data">
+    <display x="-210" y="75" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="22c3b618-4196-4a20-af8d-2bcc48378077" name="CheckInstanceAndWorkbook" type="SubSheet">
+    <loginhibit />
+    <display x="15" y="-30" w="150" h="30" />
+    <font family="Tahoma" size="10" style="Regular" color="000000" />
+    <inputs>
+      <input type="number" name="handle" narrative="The integer representing an Excel instance" expr="[handle]" />
+      <input type="text" name="workbookname" narrative="The name of the workbook to check - &quot;&quot; to indicate the active workbook" expr="[Workbook Name]" />
+    </inputs>
+    <onsuccess>2ea5fd7b-949c-449f-97ec-362331616813</onsuccess>
+    <processid>9f7a4a91-68c9-4871-bb65-417e96cc4ad1</processid>
+  </stage>
+  <stage stageid="ae484aef-0fe9-42dd-b3b6-bf509c1de522" name="Target Sheet Name" type="Data">
+    <display x="-210" y="30" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="2096c093-c7da-4f19-aacb-8f5204590b28" name="Rename Sheet Name" type="Data">
+    <display x="-150" y="30" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="adaece13-5b1d-4026-bd3b-1a6b7698ad31" name="Workbook Name" type="Data">
+    <display x="-150" y="-15" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="fd9372fe-42cf-4c24-bd91-404a428a6426" name="handle" type="Data">
+    <display x="-210" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
