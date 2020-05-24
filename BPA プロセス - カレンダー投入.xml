@@ -1,0 +1,268 @@
+﻿<process name="カレンダー投入" version="1.0" bpversion="6.6.0.15260" narrative="" byrefcollection="true" preferredid="439c647a-8b92-4b5b-af09-49e8d4854b6f">
+  <view>
+    <camerax>0</camerax>
+    <cameray>176</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="6440c71a-ab27-4d56-a5c8-efd5cd2634e3" name="開始" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>ca44d087-daeb-406b-ab8e-34a0ee91dd4a</onsuccess>
+  </stage>
+  <stage stageid="2ac1a05b-1d55-417b-9cb1-e9fed9a325e7" name="終了" type="End">
+    <display x="15" y="495" />
+  </stage>
+  <stage stageid="68ab5077-fac4-4fb4-b11a-a1caf993646d" name="ステージ1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="072339a4-710f-4279-99d5-fbe1113fa7a8" name="非稼働日リスト" type="Collection">
+    <display x="-165" y="0" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="非稼働日" type="text" />
+    </collectioninfo>
+    <initialvalue>
+      <row>
+        <field name="非稼働日" type="text" value="5/30" />
+      </row>
+      <row>
+        <field name="非稼働日" type="text" value="5/31" />
+      </row>
+    </initialvalue>
+  </stage>
+  <stage stageid="ca44d087-daeb-406b-ab8e-34a0ee91dd4a" name="Data - SQL Server::Set Connection" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="text" name="Server" friendlyname="Server" narrative="The name of the server and, if necessary, instance name of the SQL Server instance to connect to" expr="[Server]" />
+      <input type="text" name="Database" friendlyname="Database" narrative="The name of the database to connect to" expr="[Database]" />
+      <input type="text" name="User" friendlyname="User" narrative="If appropriate, the login name to use to connect to SQL Server. If left empty, windows authentication using the current user will be used instead of SQL Server authentication" expr="[User]" />
+      <input type="text" name="Password" friendlyname="Password" narrative="If appropriate, the password to use with the above login name to access SQL Server. Unused for windows authentication" expr="[Password]" />
+    </inputs>
+    <onsuccess>6d23229b-3880-4196-8aa0-f9d58fe5907a</onsuccess>
+    <resource object="Data - SQL Server" action="Set Connection" />
+  </stage>
+  <stage stageid="eb073c92-1a7e-4a90-ada4-820e362de759" name="Server" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="0" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">(LocalDB)\BluePrismLocalDB</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="279b2be4-0986-49a2-a3d1-c635e19db36e" name="Database" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="45" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">BluePrism</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="a5f1aee4-e74b-4a71-ba89-55bf0e8b7026" name="User" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="90" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="74a99812-c50a-4601-adc6-cbe140170e43" name="Password" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="135" />
+    <datatype>password</datatype>
+    <initialvalueenc>
+    </initialvalueenc>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="5b18746b-1978-4a6a-9e71-7d11be451831" name="カレンダー登録" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="75" />
+    <inputs>
+      <input type="text" name="Query" friendlyname="Query" narrative="The SQL query to use to perform this action" expr="[カレンダー登録用Query]" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+    </outputs>
+    <onsuccess>317bd15f-2d1f-4826-8bfa-bd0006f2aeb9</onsuccess>
+    <resource object="Data - SQL Server" action="Execute" />
+  </stage>
+  <stage stageid="310b940b-382e-4127-b78d-f081f30dac6d" name="カレンダー登録用Query" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="240" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">INSERT INTO BPACalendar (name, description, publicholidaygroupid, workingweek) VALUES (N'{calendarname}', N'{description}', {publicholidaygroupid}, {workingweek})</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="6d23229b-3880-4196-8aa0-f9d58fe5907a" name="カレンダー登録用Queryパラメータ設定" type="MultipleCalculation">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="15" />
+    <onsuccess>5b18746b-1978-4a6a-9e71-7d11be451831</onsuccess>
+    <steps>
+      <calculation expression="Replace([カレンダー登録用Query], &quot;{calendarname}&quot;, [carendarname])" stage="カレンダー登録用Query" />
+      <calculation expression="Replace([カレンダー登録用Query], &quot;{description}&quot;, [description])" stage="カレンダー登録用Query" />
+      <calculation expression="Replace([カレンダー登録用Query], &quot;{publicholidaygroupid}&quot;, [publicholidaygroupid])" stage="カレンダー登録用Query" />
+      <calculation expression="Replace([カレンダー登録用Query], &quot;{workingweek}&quot;, [workingweek])" stage="カレンダー登録用Query" />
+    </steps>
+  </stage>
+  <stage stageid="4ed8eb37-cc6c-4822-a46c-a91d2bdd4fd3" name="carendarname" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-240" y="0" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">テストカレンダー</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="65451e43-a83a-410a-90d0-0c6ea2f63f7b" name="description" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-240" y="45" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">テストカレンダー</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="0b1acb9a-c0f6-49d9-91fc-2b1fd3bf87b6" name="publicholidaygroupid" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-240" y="90" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">6</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="75cb2c8c-d1ea-4af4-98ee-cf401bc66407" name="workingweek" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-240" y="135" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">41</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="e551f23f-ceb6-49e1-83f2-65cbd1dab578" name="DB接続情報" type="Block">
+    <loginhibit onsuccess="true" />
+    <display x="-390" y="-45" w="90" h="225" />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+  </stage>
+  <stage stageid="7e6580a9-9dae-46a9-a2e0-ea7834fdfeda" name="カレンダー登録用" type="Block">
+    <loginhibit onsuccess="true" />
+    <display x="-285" y="-45" w="165" h="225" />
+    <font family="Segoe UI" size="10" style="Regular" color="FFFF00" />
+  </stage>
+  <stage stageid="15f9590c-6f42-4d53-83d3-fe5420bb722c" name="Query" type="Block">
+    <loginhibit onsuccess="true" />
+    <display x="-390" y="195" w="90" h="150" />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+  </stage>
+  <stage stageid="7d437c37-9492-49a5-ad69-c0f580fac7c2" name="Success" type="Data">
+    <display x="90" y="75" />
+    <datatype>flag</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="5478a871-61db-46f5-a7f8-ba9dc7e4ad98" name="Message" type="Data">
+    <display x="150" y="75" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="317bd15f-2d1f-4826-8bfa-bd0006f2aeb9" name="非稼働日リストループ" type="LoopStart">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="135" w="150" h="30" />
+    <onsuccess>e0275c04-9da9-4b7c-b415-962554216318</onsuccess>
+    <groupid>94ddaa1f-f0d4-4dcb-81c9-2d56bfdedd2e</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>非稼働日リスト</loopdata>
+  </stage>
+  <stage stageid="99f426d5-36aa-4528-b217-597b551e57ee" name="非稼働日リストループ" type="LoopEnd">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="420" w="150" h="30" />
+    <onsuccess>2ac1a05b-1d55-417b-9cb1-e9fed9a325e7</onsuccess>
+    <groupid>94ddaa1f-f0d4-4dcb-81c9-2d56bfdedd2e</groupid>
+  </stage>
+  <stage stageid="e0275c04-9da9-4b7c-b415-962554216318" name="日付？" type="Decision">
+    <display x="15" y="195" />
+    <decision expression="IsDate([非稼働日リスト.非稼働日]) AND Len([非稼働日リスト.非稼働日]) &lt;= 5" />
+    <ontrue>d716cecc-7a1b-4a65-bdab-69ac4db18d29</ontrue>
+    <onfalse>b6cc8187-53a9-4987-9f89-2d1ebb5ad8a0</onfalse>
+  </stage>
+  <stage stageid="b194511d-2bc1-4481-a9b0-71a63e3c8314" name="非稼働日登録" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="285" />
+    <inputs>
+      <input type="text" name="Query" friendlyname="Query" narrative="The SQL query to use to perform this action" expr="[非稼働日登録用Query]" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+    </outputs>
+    <onsuccess>bb311fc1-3616-4732-a3d9-2bcaa1e3449a</onsuccess>
+    <resource object="Data - SQL Server" action="Execute" />
+  </stage>
+  <stage stageid="3f5445e5-5103-47c8-85c9-e5fe0cad777f" name="非稼働日登録用Query" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-345" y="285" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">INSERT INTO BPANonWorkingDay (calendarid, nonworkingday) VALUES ((SELECT id FROM BPACalendar WHERE name = N'{calendarname}'), '{nonworkingday}')</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="d716cecc-7a1b-4a65-bdab-69ac4db18d29" name="非稼働日登録用Queryパラメータ設定" type="MultipleCalculation">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="240" />
+    <onsuccess>b194511d-2bc1-4481-a9b0-71a63e3c8314</onsuccess>
+    <steps>
+      <calculation expression="False" stage="Success" />
+      <calculation expression="&quot;&quot;" stage="Message" />
+      <calculation expression="Replace([非稼働日登録用Query], &quot;{calendarname}&quot;, [carendarname])" stage="非稼働日登録用Query" />
+      <calculation expression="Replace([非稼働日登録用Query], &quot;{nonworkingday}&quot;, ToDate([対象年] &amp; &quot;/&quot; &amp; [非稼働日リスト.非稼働日]))" stage="非稼働日登録用Query" />
+    </steps>
+  </stage>
+  <stage stageid="b6cc8187-53a9-4987-9f89-2d1ebb5ad8a0" name="アンカー1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="105" y="195" w="10" h="10" />
+    <onsuccess>2ab7a61c-4f8f-4ec9-b499-d7465bb77160</onsuccess>
+  </stage>
+  <stage stageid="2ab7a61c-4f8f-4ec9-b499-d7465bb77160" name="アンカー1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="105" y="375" w="10" h="10" />
+    <onsuccess>76e20e1a-426e-4acc-b8a8-154cb52c692f</onsuccess>
+  </stage>
+  <stage stageid="76e20e1a-426e-4acc-b8a8-154cb52c692f" name="アンカー1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="375" w="10" h="10" />
+    <onsuccess>99f426d5-36aa-4528-b217-597b551e57ee</onsuccess>
+  </stage>
+  <stage stageid="300175e5-f01b-472b-9d17-cdc95003ad6c" name="復元1" type="Recover">
+    <loginhibit />
+    <display x="225" y="15" />
+    <onsuccess>4d633c34-b755-4832-83d8-1c503a866620</onsuccess>
+  </stage>
+  <stage stageid="4d633c34-b755-4832-83d8-1c503a866620" name="例外1" type="Exception">
+    <display x="330" y="15" />
+    <exception localized="yes" type="System Exception" detail="[Message]" />
+  </stage>
+  <stage stageid="bb311fc1-3616-4732-a3d9-2bcaa1e3449a" name="初期化" type="MultipleCalculation">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="330" />
+    <onsuccess>76e20e1a-426e-4acc-b8a8-154cb52c692f</onsuccess>
+    <steps>
+      <calculation expression="False" stage="Success" />
+      <calculation expression="&quot;&quot;" stage="Message" />
+      <calculation expression="&quot;INSERT INTO BPANonWorkingDay (calendarid, nonworkingday) VALUES ((SELECT id FROM BPACalendar WHERE name = N'{calendarname}'), '{nonworkingday}')&quot;" stage="非稼働日登録用Query" />
+    </steps>
+  </stage>
+  <stage stageid="051e7161-708a-46f6-9180-34efc811eba3" name="対象年" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-165" y="45" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">2020</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
