@@ -106,7 +106,7 @@
   <subsheet subsheetid="3f9413eb-1c4f-4c39-a9f4-744d475c37dc" type="Normal" published="True">
     <name>パラメータ置換</name>
     <view>
-      <camerax>-424</camerax>
+      <camerax>-6</camerax>
       <cameray>-21</cameray>
       <zoom version="2">1.25</zoom>
     </view>
@@ -3398,7 +3398,9 @@ Next
   </stage>
   <stage stageid="ca59dd23-deb4-43c6-8bfe-aa5579829657" name="パラメータ置換" type="SubSheetInfo">
     <subsheetid>3f9413eb-1c4f-4c39-a9f4-744d475c37dc</subsheetid>
-    <narrative>各フィールドの値を置換する</narrative>
+    <narrative>各フィールドの値を置換する。
+Partial Match : 部分一致で変換するならTrue、完全一致ならFalse
+指定しなかった場合は完全一致で処理する。</narrative>
     <display x="-60" y="-105" w="150" h="90" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
   </stage>
@@ -3414,6 +3416,7 @@ Next
       <input type="collection" name="Main Collection" stage="Main Collection" />
       <input type="text" name="Before Replacement" stage="Before Replacement" />
       <input type="text" name="After Replacement" stage="After Replacement" />
+      <input type="flag" name="Partial Match" stage="Partial Match" />
     </inputs>
     <onsuccess>fc0e262b-601a-40c5-86bf-cc83a2711ef3</onsuccess>
   </stage>
@@ -3429,12 +3432,14 @@ Next
   <stage stageid="fc0e262b-601a-40c5-86bf-cc83a2711ef3" name="パラメータ置換" type="Code">
     <subsheetid>3f9413eb-1c4f-4c39-a9f4-744d475c37dc</subsheetid>
     <loginhibit />
+    <narrative>Partial Match : 部分一致で変換するならTrue、完全一致ならFalse</narrative>
     <display x="105" y="0" w="150" h="60" />
     <font family="Tahoma" size="10" style="Regular" color="000000" />
     <inputs>
       <input type="collection" name="Main Collection" expr="[Main Collection]" />
       <input type="text" name="Before Replacement" expr="[Before Replacement]" />
       <input type="text" name="After Replacement" expr="[After Replacement]" />
+      <input type="flag" name="Partial Match" expr="[Partial Match]" />
     </inputs>
     <outputs>
       <output type="collection" name="Amended Collection" stage="Amended Collection" />
@@ -3445,7 +3450,13 @@ Next
 For Each row as DataRow in Main_Collection.Rows
 	For Each col as DataColumn in Main_Collection.Columns
 		Dim val as String = CStr(row(col.columnName))
-		Main_Collection.Rows(RowIndex)(col.columnName) = val.Replace(Before_Replacement, After_Replacement)
+		If Partial_Match Then
+			Main_Collection.Rows(RowIndex)(col.columnName) = val.Replace(Before_Replacement, After_Replacement)
+		Else
+			If val = Before_Replacement Then
+				Main_Collection.Rows(RowIndex)(col.columnName) = After_Replacement
+			End If
+		End If
 	Next
 	RowIndex = RowIndex + 1
 Next
@@ -3487,6 +3498,14 @@ Amended_Collection = Main_Collection
     <subsheetid>3f9413eb-1c4f-4c39-a9f4-744d475c37dc</subsheetid>
     <display x="360" y="-75" w="120" h="30" />
     <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b00da2aa-cbcd-4148-acff-29747ddd754a" name="Partial Match" type="Data">
+    <subsheetid>3f9413eb-1c4f-4c39-a9f4-744d475c37dc</subsheetid>
+    <display x="360" y="-30" w="120" h="30" />
+    <datatype>flag</datatype>
     <initialvalue />
     <private />
     <alwaysinit />
