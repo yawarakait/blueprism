@@ -131,10 +131,10 @@
 
 	' Sort_Field1~3に合致するカラムのデータ型を数値型に変更
 	For Each c As System.Data.DataColumn In Collection_In.Columns
-		If Array.IndexOf(SortFieldAry, c.ColumnName) Then
+		If Array.IndexOf(SortFieldAry, c.ColumnName) <> -1 Then
 			New_Collection.Columns.Add(New DataColumn(c.ColumnName, GetType(Integer)))
 		Else
-			New_Collection.Columns.Add(New DataColumn(c.ColumnName, GetType(String)))
+			New_Collection.Columns.Add(New DataColumn(c.ColumnName, c.DataType))
 		End If
 	Next
 
@@ -161,6 +161,7 @@
 
     Success = True
     Message = ""
+
 Catch e As Exception
     Success = False
     Message = e.Message
